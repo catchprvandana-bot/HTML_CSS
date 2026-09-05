@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Machines Learn to Think</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="aurora" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+
+  <nav>
+    <div class="wrap">
+      <span class="brand">HOW AI THINKS</span>
+      <div class="nav-links">
+        <a href="#neuron">Neuron</a>
+        <a href="#layers">Layers</a>
+        <a href="#training">Training</a>
+        <a href="#uses">Everyday AI</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="hero">
+      <div class="wrap center">
+        <p class="tag mono">AN EXPLAINER · DESIGN CONCEPT</p>
+        <h1>How machines<br>learn to <span class="grad">think</span>.</h1>
+        <p class="lede">A short visual walk through what's actually happening inside a neural network — from a single artificial neuron to a fully trained model.</p>
+
+        <svg class="network" viewBox="0 0 520 220" aria-hidden="true">
+          <defs>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#22D3EE"/>
+              <stop offset="100%" stop-color="#F472B6"/>
+            </linearGradient>
+          </defs>
+          <g>
+            <line x1="60" y1="60" x2="260" y2="40"/>
+            <line x1="60" y1="60" x2="260" y2="110"/>
+            <line x1="60" y1="60" x2="260" y2="180"/>
+            <line x1="60" y1="160" x2="260" y2="40"/>
+            <line x1="60" y1="160" x2="260" y2="110"/>
+            <line x1="60" y1="160" x2="260" y2="180"/>
+            <line x1="260" y1="40" x2="460" y2="110"/>
+            <line x1="260" y1="110" x2="460" y2="110"/>
+            <line x1="260" y1="180" x2="460" y2="110"/>
+          </g>
+          <circle class="node n1" cx="60" cy="60" r="7"/>
+          <circle class="node n2" cx="60" cy="160" r="7"/>
+          <circle class="node n3" cx="260" cy="40" r="7"/>
+          <circle class="node n4" cx="260" cy="110" r="7"/>
+          <circle class="node n5" cx="260" cy="180" r="7"/>
+          <circle class="node n6" cx="460" cy="110" r="9"/>
+        </svg>
+
+        <p class="scroll-cue mono">↓ scroll to explore</p>
+      </div>
+    </header>
+
+    <section id="neuron" class="block">
+      <div class="wrap center">
+        <p class="eyebrow mono">Step 1</p>
+        <h2>It starts with one neuron.</h2>
+        <p class="desc">An artificial neuron takes a set of inputs, multiplies each by a learned weight, adds them up, and passes the result through an activation function that decides how strongly it "fires."</p>
+
+        <svg class="neuron-diagram" viewBox="0 0 560 160" aria-hidden="true">
+          <defs>
+            <radialGradient id="dotGrad" r="60%">
+              <stop offset="0%" stop-color="#FBBF24"/>
+              <stop offset="100%" stop-color="#F472B6"/>
+            </radialGradient>
+          </defs>
+          <path d="M20,80 C120,80 160,80 220,80 S320,80 380,80 S480,80 540,80" fill="none" stroke="var(--line)" stroke-width="2"/>
+          <circle cx="20" cy="80" r="7" fill="#22D3EE"/>
+          <circle cx="380" cy="80" r="16" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+          <circle cx="540" cy="80" r="7" fill="#F472B6"/>
+          <circle class="flow-dot" r="6" fill="url(#dotGrad)"/>
+        </svg>
+
+        <div class="badge-row">
+          <span class="badge">inputs × weights</span>
+          <span class="badge">+ bias</span>
+          <span class="badge">activation function</span>
+          <span class="badge">→ output</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="layers" class="block">
+      <div class="wrap center">
+        <p class="eyebrow mono">Step 2</p>
+        <h2>Layers stack into a network.</h2>
+        <p class="desc">Thousands of these neurons are arranged in layers. Each layer learns slightly more abstract patterns than the one before it — edges, then shapes, then concepts.</p>
+
+        <div class="layers" aria-hidden="true">
+          <div class="layer-col"><div class="lnode"></div><div class="lnode"></div><div class="lnode"></div></div>
+          <div class="layer-col"><div class="lnode"></div><div class="lnode"></div><div class="lnode"></div><div class="lnode"></div></div>
+          <div class="layer-col"><div class="lnode"></div><div class="lnode"></div><div class="lnode"></div><div class="lnode"></div></div>
+          <div class="layer-col"><div class="lnode"></div><div class="lnode"></div></div>
+        </div>
+        <div class="layer-labels">
+          <span>Input</span><span>Hidden</span><span>Hidden</span><span>Output</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="training" class="block">
+      <div class="wrap center">
+        <p class="eyebrow mono">Step 3</p>
+        <h2>It learns by being wrong, a lot.</h2>
+        <p class="desc">Every prediction is compared to the correct answer, producing a "loss" — a number that measures how wrong the model was. Backpropagation nudges every weight slightly to make that number smaller next time.</p>
+
+        <svg class="loss-wrap" viewBox="0 0 520 180" aria-hidden="true">
+          <defs>
+            <linearGradient id="lossGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#F472B6"/>
+              <stop offset="100%" stop-color="#22D3EE"/>
+            </linearGradient>
+          </defs>
+          <path d="M10,20 C 100,40 140,150 220,150 S 340,60 420,40 S 500,20 510,15"/>
+        </svg>
+        <div class="loss-labels"><span>Training starts</span><span>Loss ↓ over time</span></div>
+      </div>
+    </section>
+
+    <section id="stats" class="block">
+      <div class="wrap center">
+        <p class="eyebrow mono">Scale</p>
+        <h2>Why this takes so much computing power.</h2>
+        <dl class="stats-strip">
+          <div class="stat-item"><dd>100B+</dd><dt>parameters in a large model</dt></div>
+          <div class="stat-item"><dd>1000s</dd><dt>of GPUs training in parallel</dt></div>
+          <div class="stat-item"><dd>&lt;100ms</dd><dt>typical inference response time</dt></div>
+        </dl>
+        <p class="illustrative-note">Illustrative, order-of-magnitude figures — not specific to any single model.</p>
+      </div>
+    </section>
+
+    <section id="uses" class="block">
+      <div class="wrap center">
+        <p class="eyebrow mono">In practice</p>
+        <h2>The same idea, everywhere you look.</h2>
+        <p class="desc">Different inputs, different outputs — but underneath, the same neurons, layers, and training loop.</p>
+
+        <div class="use-grid">
+          <div class="use-card"><div class="icon"></div><h3>Vision</h3><p>Recognizing objects, faces, and defects in images and video.</p></div>
+          <div class="use-card"><div class="icon"></div><h3>Language</h3><p>Understanding and generating text, translation, summarization.</p></div>
+          <div class="use-card"><div class="icon"></div><h3>Prediction</h3><p>Forecasting demand, detecting fraud, predicting equipment failure.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span class="brand">HOW AI THINKS</span>
+      <p class="fine">An educational visual explainer built with HTML &amp; CSS. This is a simple design concept.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
